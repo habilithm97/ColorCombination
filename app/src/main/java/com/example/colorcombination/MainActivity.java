@@ -24,11 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
         // 입력창의 글자 수 제한 및 숫자랑 영문만 입력할 수 있도록 한글과 특수 문자 제한
         EditText edt = (EditText)findViewById(R.id.edt);
-        edt.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2), new InputFilter() {
+        // EditText에 필터 생성(최대 글자 수 설정 필터와 원하는 문자만 입력할 수 있는 필터)
+        edt.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2), new InputFilter() { // 최대 글자 수는 2
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                Pattern pattern = Pattern.compile("^[a-zA-Z0-9]*$");
+                Pattern pattern = Pattern.compile("^[a-fA-F0-9]*$"); // 영문(소문자, 대문자)과 숫자만 입력 가능한 패턴
 
+                // 입력된 문자가 패턴과 일치하지 않으면 입력이 안 됨
                 if(!pattern.matcher(source).matches()) {
                     return "";
                 }
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         edt2.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2), new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                Pattern pattern = Pattern.compile("^[a-zA-Z0-9]*$");
+                Pattern pattern = Pattern.compile("^[a-fA-F0-9]*$");
 
                 if(!pattern.matcher(source).matches()) {
                     return "";
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         edt3.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2), new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                Pattern pattern = Pattern.compile("^[a-zA-Z0-9]*$");
+                Pattern pattern = Pattern.compile("^[a-fA-F0-9]*$");
 
                 if(!pattern.matcher(source).matches()) {
                     return "";
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         edt4.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2), new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                Pattern pattern = Pattern.compile("^[a-zA-Z0-9]*$");
+                Pattern pattern = Pattern.compile("^[a-fA-F0-9]*$");
 
                 if(!pattern.matcher(source).matches()) {
                     return "";
@@ -80,15 +82,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(edt.getText().toString().equals("") || edt2.getText().toString().equals("") ||
-                edt3.getText().toString().equals("") || edt4.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "색상 코드 값을 모두 입력 해주세요. " , Toast.LENGTH_SHORT).show();
-                }
-
-                if(edt.getText().toString().length() == 1 || edt2.getText().toString().length() == 1 ||
+                        edt3.getText().toString().equals("") || edt4.getText().toString().equals("") ||
+                        edt.getText().toString().length() == 1 || edt2.getText().toString().length() == 1 ||
                         edt3.getText().toString().length() == 1 || edt4.getText().toString().length() == 1) {
                     Toast.makeText(getApplicationContext(), "색상 코드 값을 모두 입력 해주세요. " , Toast.LENGTH_SHORT).show();
+                } else {
+                    colorCombination();
                 }
             }
         });
+    }
+
+    public void colorCombination() {
+
     }
 }
