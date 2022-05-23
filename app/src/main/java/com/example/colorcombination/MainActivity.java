@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
         TextView main = (TextView)findViewById(R.id.main);
 
-        // EditText 입력창에 숫자랑 영문만 입력할 수 있도록 한글과 특수 문자 제한
-        InputFilter inputFilter = new InputFilter() {
+        // 입력창의 글자 수 제한 및 숫자랑 영문만 입력할 수 있도록 한글과 특수 문자 제한
+        EditText edt = (EditText)findViewById(R.id.edt);
+        edt.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2), new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
                 Pattern pattern = Pattern.compile("^[a-zA-Z0-9]*$");
@@ -33,19 +34,46 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return null;
             }
-        };
-
-        EditText edt = (EditText)findViewById(R.id.edt);
-        edt.setFilters(new InputFilter[]{inputFilter});
+        }});
 
         EditText edt2 = (EditText)findViewById(R.id.edt2);
-        edt2.setFilters(new InputFilter[]{inputFilter});
+        edt2.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2), new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                Pattern pattern = Pattern.compile("^[a-zA-Z0-9]*$");
+
+                if(!pattern.matcher(source).matches()) {
+                    return "";
+                }
+                return null;
+            }
+        }});
 
         EditText edt3 = (EditText)findViewById(R.id.edt3);
-        edt3.setFilters(new InputFilter[]{inputFilter});
+        edt3.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2), new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                Pattern pattern = Pattern.compile("^[a-zA-Z0-9]*$");
+
+                if(!pattern.matcher(source).matches()) {
+                    return "";
+                }
+                return null;
+            }
+        }});
 
         EditText edt4 = (EditText)findViewById(R.id.edt4);
-        edt4.setFilters(new InputFilter[]{inputFilter});
+        edt4.setFilters(new InputFilter[]{new InputFilter.LengthFilter(2), new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                Pattern pattern = Pattern.compile("^[a-zA-Z0-9]*$");
+
+                if(!pattern.matcher(source).matches()) {
+                    return "";
+                }
+                return null;
+            }
+        }});
 
         Button btn = (Button)findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
