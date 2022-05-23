@@ -83,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
                 edt3.getText().toString().equals("") || edt4.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "색상 코드 값을 모두 입력 해주세요. " , Toast.LENGTH_SHORT).show();
                 }
+
+                if(edt.getText().toString().length() == 1 || edt2.getText().toString().length() == 1 ||
+                        edt3.getText().toString().length() == 1 || edt4.getText().toString().length() == 1) {
+                    Toast.makeText(getApplicationContext(), "색상 코드 값을 모두 입력 해주세요. " , Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
