@@ -23,7 +23,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="2dp"
             android:padding="4dp"
-            android:hint="A(투명도)"
+            android:hint="AA(투명도)"
+            android:textSize="15sp"
             android:maxLength="2"
             android:layout_weight="1"/>
 
@@ -34,7 +35,8 @@
             android:background="@drawable/line"
             android:layout_marginRight="2dp"
             android:padding="4dp"
-            android:hint="R(빨강)"
+            android:hint="RR(빨강)"
+            android:textSize="15sp"
             android:maxLength="2"
             android:layout_weight="1" />
 
@@ -45,7 +47,8 @@
             android:background="@drawable/line"
             android:layout_marginRight="2dp"
             android:padding="4dp"
-            android:hint="G(초록)"
+            android:hint="GG(초록)"
+            android:textSize="15sp"
             android:maxLength="2"
             android:layout_weight="1" />
 
@@ -56,7 +59,8 @@
             android:background="@drawable/line"
             android:layout_marginRight="5dp"
             android:padding="4dp"
-            android:hint="B(파랑)"
+            android:hint="BB(파랑)"
+            android:textSize="15sp"
             android:maxLength="2"
             android:layout_weight="1" />
 
